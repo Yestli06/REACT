@@ -24,7 +24,7 @@ export const Contador=()=>{
 
     return(
         <Fragment>
-        <h1>CALCULADORA</h1>
+        <h1>CALCULADOR</h1>
 
             
             <button type="button" onClick={Sumar}>+</button>
