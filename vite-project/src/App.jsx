@@ -6,40 +6,83 @@ import Example from './contador'
 
 function App() {  
   const [valor, setValor] = useState("")
-  const [valor2] = useState("")
+  const [valor1,setValor1] = useState("")
+  const [op, setOp]=useState("")
 
-  var resultado;
+ 
+  const Operador = (i) => {
+    if (op == "") {
+      setValor1(parseFloat(valor));
+      setOp(i.target.value);
+      setValor("");
+    } else {
+      setOp(i.target.value);
+    }
+  };
 
-  var suma;
+
+  const Res =()=>{
+    if(op == "+"){
+    setValor(parseFloat(valor) + valor1);
+    setOp("");
+    setValor1("");
+    }
+    if(op == "-"){
+    setValor(parseFloat(valor1) - valor);
+    setOp("");
+    setValor1("");
+    }
+    if(op == "/"){
+    setValor(parseFloat(valor1) / valor);
+    setOp("");
+    setValor1("");
+    }
+    if(op == "*"){
+    setValor(parseFloat(valor) * valor1);
+    setOp("");
+    setValor1("");
+    }
+};
+
+  const Borrar = () => {
+    return(
+     setValor("")
+    )
+ }
+  
   function Example(props){
     return(
-       <button onClick={()=> setValor(valor +(props.numero) )} class="btn btn-danger"> {props.numero}</button>  
+       <button onClick={()=> setValor(valor +(props.numero) )} class=" btn-primary"> {props.numero}</button>  
       )
   }
-
   
-
-  const Pantalla=()=>{
+  function BtnOpera(props){
     return(
-        <input type="text" value={valor} />
+      <button class=" btn-primary" onClick={Operador} value={props.numero}>{props.numero}</button>
+    )
+  } 
+
+  function Resultado(props){
+    return(
+      <button class=" btn-danger" onClick={Res} value={props.numero}>{props.numero}</button>
+    )
+  } 
+
+  const Pantalla =()=>{
+    return(
+      <input type="text" value={valor} />
     )
   }
 
-  const Pantalla2=()=>{
+  function Borrar1(props){
     return(
-        <input type="text" value={valor2} />
+        <button class=" btn-warning" onClick={Borrar} value={props.numero}>{props.numero}</button>
     )
-  }
-
-  const Suma=()=>{
-   
-  }
-
+}
 
   return (
     <>
-      <Pantalla/><br />
-      <Pantalla2/>
+      <Pantalla/>
       <table border="1">
      <tr>
         
@@ -48,22 +91,26 @@ function App() {
         <td><Example numero="1"/></td>
         <td><Example numero="2"/></td>
         <td><Example numero="3"/></td>
-        <td><Example numero="4"/></td>
-        <td><Suma/>+</td>
+        <td><Borrar1 numero="C"/></td>
       </tr>
       <tr>
+        <td><Example numero="4"/></td>
         <td><Example numero="5"/></td>
         <td><Example numero="6"/></td>
-        <td><Example numero="7"/></td>
-        <td><Example numero="8"/></td>
-        <td><Example numero="-"/></td>
+        <td><BtnOpera numero="-"/></td>
       </tr>
       <tr>
+        <td><Example numero="7"/></td>
+        <td><Example numero="8"/></td>
         <td><Example numero="9"/></td>
+        <td><BtnOpera numero="*"/></td>
+      </tr>
+      <tr>
+        <td><BtnOpera numero="/"/></td>
         <td><Example numero="0"/></td>
-        <td><Example numero="/"/></td>
-        <td><Example numero="*"/></td>
-        <td><Example numero="="/></td>
+        <td><BtnOpera numero="+"/></td>
+        <td><Resultado numero="="/></td>
+       
       </tr>
     </table>
     </>

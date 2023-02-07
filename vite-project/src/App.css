@@ -4,7 +4,7 @@
   padding: 2rem;
   text-align: center;
   font-family: 'Courier New', Courier, monospace;
-  color:  #ff6479aa;
+  color:  #e6a1aaaa;
   border-color: #0a0e63;
 }
 
@@ -14,10 +14,10 @@
   will-change: filter;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #ff6479aa);
+  filter: drop-shadow(0 0 2em #42040caa);
 }
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #fb61b6aa);
+  filter: drop-shadow(0 0 2em #8a0e52aa);
 }
 
 @keyframes logo-spin {
